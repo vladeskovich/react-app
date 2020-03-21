@@ -1,0 +1,25 @@
+.nav {
+  grid-area: n;
+  background-color: #7cd2b0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.item {
+  margin: 5px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50px;
+}
+.item a {
+  color: white;
+  text-decoration: none;
+  color: black;
+}
+.item a.active {
+  color: blue;
+}
