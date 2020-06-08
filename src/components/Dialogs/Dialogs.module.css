@@ -1,16 +1,52 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 3fr;
+}
+.dialog img{
+    width: 30px;
+    height: 30px;
+    border-radius:30px ;
 }
 .dialogsItems {
+    display: flex;
+    flex-direction: column;
     padding: 5px;
+    background-color: rgb(47,49,54);
+    color: rgb(111,119,125);
+}
+.dialogsItems a {
+    display: flex;
+    padding: 5px;
+    text-decoration: none;
+    color: rgb(111,119,125);
 }
 .dialogsItems .active {
-    color: violet;
+    color: white;
 }
 .messages {
     padding: 5px;
+    background-color: rgb(54,57,63);
+    color: rgb(111,119,125);
 }
-.message {
-
+.messages button {
+    background-color: rgb(64,68,75);
+    color: rgb(111,119,125);
+    border: none;
+    border-radius: 20px;
+    width: 35px;
+    height: 35px;
+    margin-left: 10px;
+    outline:none;
+}
+.messagesInput {
+    display: flex;
+}
+.messagesInput textarea{
+    border: none;
+    resize: none;
+    background-color: rgb(64,68,75);
+    color: rgb(111,119,125);
+    width: 400px;
+    border-radius: 20px;
+    outline:none;
 }

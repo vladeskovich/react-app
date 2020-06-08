@@ -1,6 +1,6 @@
 .nav {
   grid-area: n;
-  background-color: #7cd2b0;
+  background-color: rgb(32,34,37);
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -12,14 +12,13 @@
   width: 100px;
   display: flex;
   justify-content: center;
-  background-color: white;
+  background-color: rgb(57,60,67);
   border-radius: 50px;
 }
 .item a {
-  color: white;
   text-decoration: none;
-  color: black;
+  color: rgb(111,119,125);
 }
 .item a.active {
-  color: blue;
+  color: white;
 }
