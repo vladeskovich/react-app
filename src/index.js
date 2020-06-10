@@ -3,15 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import state, {subscribe, updateNewPostText} from "./redux/state";
-import {addPost} from "./redux/state"
+import store from "./redux/state";
 
-export let renderEntireTree = () => {
+export let renderEntireTree = (state) => {
     ReactDOM.render(
-        <App state={state} addPost={addPost}  updateNewPostText={updateNewPostText}/>, document.getElementById('root'));
+        <App state={state} dispatch={store.dispatch.bind(store)}/>, document.getElementById('root'));
 }
 
-renderEntireTree(state);
+renderEntireTree(store.getState());
 
-subscribe(renderEntireTree);
+store.subscribe(renderEntireTree);
 serviceWorker.unregister();

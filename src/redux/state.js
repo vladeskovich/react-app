@@ -1,46 +1,53 @@
-let renderEntireTree = () => {
-    console.log("vlad");
-}
-
-let state = {
-    profilePage: {
-        posts : [
-            {id: 1, message: "How are you?", likesCount:12},
-            {id: 2, message: "Second post", likesCount:13},
-            {id: 3, message: "Good work", likesCount:0}
-        ],
-        newPostText : "vlad"
+let store = {
+    _state: {
+        profilePage: {
+            posts : [
+                {id: 1, message: "How are you?", likesCount:12},
+                {id: 2, message: "Second post", likesCount:13},
+                {id: 3, message: "Good work", likesCount:0}
+            ],
+            newPostText : "vlad"
+        },
+        dialogsPage: {
+            messages : [
+                {id: 1, message: "Yo Vlad"},
+                {id: 2, message: "Hi"},
+                {id: 3, message: "Bye"}
+            ],
+            dialogs : [
+                {id: 1, name: "Viktor"},
+                {id: 2, name: "Vlad"},
+                {id: 3, name: "Vova"}
+            ],
+        }
     },
-    dialogsPage: {
-        messages : [
-            {id: 1, message: "Yo Vlad"},
-            {id: 2, message: "Hi"},
-            {id: 3, message: "Bye"}
-        ],
-        dialogs : [
-            {id: 1, name: "Viktor"},
-            {id: 2, name: "Vlad"},
-            {id: 3, name: "Vova"}
-        ],
-    }
-}
+    _callSubscriber() {
+        console.log("vlad");
+    },
 
-export const addPost = () => {
-    let post = {
-        id : 4,
-        message : state.profilePage.newPostText,
-        likesCount : 0
-    }
-    state.profilePage.posts.push(post);
-    state.profilePage.newPostText = '';
-    renderEntireTree(state);
-}
-export const updateNewPostText = (value) => {
-    state.profilePage.newPostText = value;
-    renderEntireTree();
-}
+    getState() {
+        return this._state;
+    },
+    subscribe(observer) {
+        this._callSubscriber = observer;
+    },
 
-export const subscribe = (observer) => {
-    renderEntireTree = observer;
+    dispatch(action) {
+        debugger;
+        if(action.type === 'ADD-POST')
+        {
+            let post = {
+                id : 4,
+                message : this._state.profilePage.newPostText,
+                likesCount : 0
+            }
+            this._state.profilePage.posts.push(post);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber(this._state);
+        }  else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.message;
+            this._callSubscriber(this._state);
+        }
 }
-export default state
+}
+export default store
