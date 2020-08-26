@@ -33,9 +33,13 @@ export const authAPI = {
             .then(response => response.data);
     },
     logIn(email, password, rememberMe) {
-        return instance.post(`/auth/login`, {email, password, rememberMe})
+        return instance.post(`auth/login`, {email, password, rememberMe})
+    },
+    logOut() {
+        return instance.delete(`/auth/login`)
     }
 };
+
 export const profileAPI = {
     getStatus(userId) {
         return instance.get(`profile/status/` + userId)
