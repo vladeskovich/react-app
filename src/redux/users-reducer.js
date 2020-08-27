@@ -59,14 +59,14 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: action.isFetching
-            }
+            };
         case FOLLOWING_IN_PROGRESS:
             return {
                 ...state,
                 isFollowing: action.isFetching
                     ? [...state.isFollowing, action.userId]
                     : [state.isFollowing.filter(id => id !== action.userId)]
-            }
+            };
         default:
             return state;
     }
@@ -79,8 +79,9 @@ export const setTotalUsersCount = (totalCount) => ({type: SET_TOTAL_USERS_COUNT,
 export const setIsFetching = (isFetching) => ({type: TOOGLE_IS_FETCHING, isFetching});
 export const setIsFollowing = (isFetching, userId) => ({type: FOLLOWING_IN_PROGRESS, isFetching, userId});
 
-export const getUsers = (currentPage, pageSize) => {
+export const getUsersRequest = (currentPage, pageSize) => {
     return (dispatch) => {
+        dispatch(setPage(currentPage));
         dispatch(setIsFetching(true));
         usersAPI.getUsers(currentPage, pageSize)
             .then(data => {

@@ -33,6 +33,7 @@ const LoginForm = (props) => {
             <div>
                 <button type={'submit'}>Login</button>
             </div>
+            {props.error && <div>{props.error}</div>}
         </form>
     )
 };
